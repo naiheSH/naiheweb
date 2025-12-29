@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LinkInBio - 个人联系方式聚合">
+    <meta name="author" content="">
+    
+    <title>LinkInBio - 个人联系方式聚合</title>
+    
+    <!-- 外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 overflow-x-hidden">
+    <div class="max-w-2xl mx-auto px-6 py-12">
+        <!-- 个人资料模块 -->
+        <header class="text-center mb-12">
+            <img 
+                src="./image/naihe.jpg" 
+                alt="山河尽赠佳人"
+                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-white dark:border-slate-800 shadow-2xl"
+            />
+            
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold mb-2 font-calligraphy">山河尽赠佳人</h1>
+            </div>
+
+            <div class="glass p-6 rounded-lg max-w-lg mx-auto">
+                <p class="text-slate-800 dark:text-slate-200 text-lg leading-relaxed font-calligraphy">
+                    不知道过了多少次，<br>
+                    还是有一个曾经的记忆反噬瞬间涌现。<br>
+                    我至终无法评判曾经的过往一切和选择是否对错，<br>
+                    但是好像只有那一条路可以将自己筑起围墙，<br>
+                    说谎的人和被骗的人都没有对错的资本。
+                </p>
+            </div>
+        </header>
+
+        <!-- 联系方式标题 -->
+        <section class="mb-12">
+            <div class="flex items-center gap-6 px-4 mb-8">
+                <div class="h-[1px] flex-1 bg-black/10 dark:bg-white/20"></div>
+                <h2 class="text-[10px] font-black text-slate-900/50 dark:text-white/40 uppercase tracking-[0.5em] whitespace-nowrap">与我保持连接</h2>
+                <div class="h-[1px] flex-1 bg-black/10 dark:bg-white/20"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- 个人微信 -->
+                <div 
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer"
+                   onclick="showContactInfo('个人微信', 'naihe220930', './image/wechat-qr.jpg')"
+                >
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#07C160] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22l1.9-3.9a9 9 0 0 0 5.1 1.9"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">个人微信</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">naihe220930</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 企业微信 -->
+                <div 
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer"
+                   onclick="showContactInfo('企业微信', '山河尽赠佳人', './image/work-wechat-qr.jpg')"
+                >
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#3370FF] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">企业微信</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">山河尽赠佳人</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 飞书 (Lark) -->
+                <div 
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer"
+                   onclick="showContactInfo('飞书 (Lark)', '山河尽赠佳人', './image/feishu-qr.jpg')"
+                >
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#007AFF] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">飞书 (Lark)</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">山河尽赠佳人</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 腾讯 QQ -->
+                <div 
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer"
+                   onclick="showContactInfo('腾讯 QQ', '2768697066', './image/qq-qr.jpg')"
+                >
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#12B7F5] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">腾讯 QQ</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">2768697066</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/naiheSH" target="_blank" rel="noopener noreferrer"
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#181717] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">GitHub</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">naiheSH</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- 电子邮件 -->
+                <a href="mailto:2768697066@qq.com" target="_blank" rel="noopener noreferrer"
+                   class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[1rem] bg-[#EA4335] flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">电子邮件</span>
+                            <span class="text-[10px] font-bold opacity-40 tracking-wide uppercase truncate max-w-[110px] text-slate-700 dark:text-slate-400">2768697066@qq.com</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="mt-16 py-10 text-center space-y-4">
+            <div class="flex justify-center gap-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-black/10 dark:bg-white/20"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-black/20 dark:bg-white/40"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-black/10 dark:bg-white/20"></span>
+            </div>
+            <p class="text-slate-900/30 dark:text-white/20 text-[9px] tracking-[0.4em] font-bold uppercase">
+                &copy; 2025 山河尽赠佳人 • 数字化名片
+            </p>
+        </footer>
+    </div>
+    
+    <!-- 二维码模态框 -->
+    <div id="qr-modal" class="modal hidden">
+        <div class="modal-content relative glass">
+            <button class="close-btn" onclick="closeQRModal()">&times;</button>
+            <h2 id="platform-name" class="text-2xl font-bold mb-2"></h2>
+            <p id="contact-value" class="text-gray-600 dark:text-gray-300 mb-4"></p>
+            <div class="qr-code-container">
+                <img id="qr-image" src="" alt="二维码" class="mx-auto">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 自定义脚本 -->
+    <script src="./js/script.js"></script>
+</body>
+</html>

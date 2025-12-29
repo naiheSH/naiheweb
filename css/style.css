@@ -1,0 +1,319 @@
+/* 基础样式重置 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* 随机背景壁纸容器 */
+.background-wallpaper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+    animation: fadeIn 1s ease-out;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+/* 深色模式下的背景透明度调整 */
+@media (prefers-color-scheme: dark) {
+    .background-wallpaper {
+        opacity: 0.2;
+    }
+}
+
+/* 页面加载动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+/* 深色模式下的加载动画 */
+@media (prefers-color-scheme: dark) {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 0.2;
+        }
+    }
+}
+
+/* 内容淡入动画 */
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 元素悬停上浮效果 */
+@keyframes hoverUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+/* 按钮点击反馈动画 */
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 卡片悬停动画 */
+@keyframes cardHover {
+    from {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+    to {
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* 深色模式下的卡片悬停动画 */
+@media (prefers-color-scheme: dark) {
+    @keyframes cardHover {
+        from {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+        }
+        to {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        }
+    }
+}
+
+/* 主字体引入 - 使用Google Fonts作为备选 */
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+
+/* 本地字体定义 - 使用本地字体文件 */
+/* 保存字体文件指南：
+   1. 访问 https://fonts.google.com/specimen/Ma+Shan+Zheng
+   2. 点击右上角的"Download family"按钮
+   3. 解压下载的zip文件
+   4. 将MaShanZheng-Regular.woff2文件放入fonts文件夹中
+*/
+@font-face {
+    font-family: 'Ma Shan Zheng';
+    src: url('../fonts/MaShanZheng-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 自定义字体类 */
+.font-calligraphy {
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+/* 内容容器动画 */
+.max-w-2xl {
+    animation: contentFadeIn 1s ease-out;
+}
+
+/* 增强的玻璃态样式 */
+.glass {
+    /* 更通透的背景色 */
+    background: rgba(255, 255, 255, 0.3);
+    /* 增强的高斯模糊效果 */
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    /* 更精致的边框效果 */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* 添加微妙的发光效果 */
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.15),
+        0 1px 1px 0 rgba(255, 255, 255, 0.3) inset;
+    color: #1e293b;
+    transition: all 0.3s ease;
+    animation: cardHover 0.3s ease-out forwards;
+}
+
+/* 深色模式下的增强玻璃态样式 */
+@media (prefers-color-scheme: dark) {
+    .glass {
+        background: rgba(15, 23, 42, 0.35);
+        backdrop-filter: blur(24px) saturate(120%);
+        -webkit-backdrop-filter: blur(24px) saturate(120%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 8px 32px 0 rgba(0, 0, 0, 0.35),
+            0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+        color: #f1f5f9;
+    }
+}
+
+/* 玻璃态卡片悬停效果 */
+.glass:hover {
+    transform: translateY(-5px);
+    animation: cardHover 0.3s ease-out forwards;
+}
+
+/* 按钮点击反馈效果 */
+.glass:active {
+    animation: buttonClick 0.2s ease-out;
+}
+
+/* 头像悬停效果 */
+.w-24.h-24.rounded-full {
+    transition: all 0.3s ease;
+}
+
+.w-24.h-24.rounded-full:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+/* 联系方式卡片悬停效果 */
+.grid-cols-1.sm\:grid-cols-2.gap-5 > div,
+.grid-cols-1.sm\:grid-cols-2.gap-5 > a {
+    transition: all 0.3s ease;
+    animation: contentFadeIn 1s ease-out;
+}
+
+.grid-cols-1.sm\:grid-cols-2.gap-5 > div:hover,
+.grid-cols-1.sm\:grid-cols-2.gap-5 > a:hover {
+    transform: translateY(-5px);
+    animation: cardHover 0.3s ease-out forwards;
+}
+
+/* 关闭按钮悬停效果 */
+.close-btn {
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+/* 深色模式下的关闭按钮悬停效果 */
+@media (prefers-color-scheme: dark) {
+    .close-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #f1f5f9;
+    }
+}
+
+/* 模态框动画 */
+.modal-content {
+    animation: contentFadeIn 0.3s ease-out;
+}
+
+/* 二维码图片悬停效果 */
+.qr-code-container img {
+    transition: all 0.3s ease;
+}
+
+.qr-code-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 二维码模态框样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background-color: #1e293b;
+        color: white;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.qr-code-container {
+    margin: 1.5rem 0;
+}
+
+.qr-code-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+    .close-btn {
+        color: #94a3b8;
+    }
+    .close-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #f1f5f9;
+    }
+}
