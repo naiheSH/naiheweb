@@ -12,17 +12,27 @@ function setRandomBackground() {
 }
 
 // 联系方式点击事件处理
-function showContactInfo(platform, value, qrUrl) {
+function showContactInfo(platform, value, qrUrl, addUrl) {
     // 如果有二维码URL，显示包含二维码的模态框
     if (qrUrl) {
         const modal = document.getElementById('qr-modal');
         const qrImage = document.getElementById('qr-image');
         const platformName = document.getElementById('platform-name');
         const contactValue = document.getElementById('contact-value');
+        const addContactBtn = document.getElementById('add-contact-btn');
         
         qrImage.src = qrUrl;
         platformName.textContent = platform;
         contactValue.textContent = value;
+        
+        // 显示或隐藏立即添加按钮
+        if (platform === '飞书 (Lark)' && addUrl) {
+            addContactBtn.href = addUrl;
+            addContactBtn.classList.remove('hidden');
+        } else {
+            addContactBtn.classList.add('hidden');
+        }
+        
         modal.classList.remove('hidden');
     } else {
         // 否则显示简单的提示框

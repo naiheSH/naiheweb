@@ -114,16 +114,7 @@ body {
     }
 }
 
-/* 主字体引入 - 使用Google Fonts作为备选 */
-@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
-
-/* 本地字体定义 - 使用本地字体文件 */
-/* 保存字体文件指南：
-   1. 访问 https://fonts.google.com/specimen/Ma+Shan+Zheng
-   2. 点击右上角的"Download family"按钮
-   3. 解压下载的zip文件
-   4. 将MaShanZheng-Regular.woff2文件放入fonts文件夹中
-*/
+/* 本地字体定义 - 使用本地字体文件Ma Shan Zheng */
 @font-face {
     font-family: 'Ma Shan Zheng';
     src: url('../fonts/MaShanZheng-Regular.woff2') format('woff2');
