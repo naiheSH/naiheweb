@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="山河尽赠佳人 - 那些关于遇见与告别的故事，一个承载回忆与情感的联系方式聚合">
+    <meta name="description" content="山河尽赠佳人 - 那些关于遇见与告别的故事">
     <meta name="author" content="">
     
-    <title>山河尽赠佳人 - 那些关于遇见与告别的故事</title>
+    <title>山河尽赠佳人-那些关于遇见与告别的故事</title>
+    
+    <!-- 移除浏览器默认favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'></svg>" type="image/svg+xml">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'></svg>" type="image/svg+xml">
     
     <!-- 外部资源 -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,30 +26,31 @@
     <link rel="preload" href="./image/qq-qr.jpg" as="image" type="image/jpeg">
     <link rel="preload" href="./image/weibo.svg" as="image" type="image/svg+xml">
     <link rel="preload" href="./image/douyin.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="./image/coolapk.svg" as="image" type="image/svg+xml">
     
     <!-- 自定义样式 -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 overflow-x-hidden">
-    <div class="max-w-2xl mx-auto px-6 py-12">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <!-- 个人资料模块 -->
-        <header class="text-center mb-12">
+        <header class="text-center mb-8 sm:mb-12">
             <img 
                 src="./image/naihe.jpg" 
                 alt="山河尽赠佳人"
-                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-white dark:border-slate-800 shadow-2xl"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-3 sm:mb-4 border-2 border-white dark:border-slate-800 shadow-2xl"
             />
             
-            <div class="mb-6">
-                <h1 class="text-3xl font-bold mb-2 font-calligraphy">山河尽赠佳人</h1>
+            <div class="mb-4 sm:mb-6">
+                <h1 class="text-2xl sm:text-3xl font-bold mb-2 font-calligraphy">山河尽赠佳人</h1>
             </div>
 
-            <div class="glass p-6 rounded-lg max-w-lg mx-auto">
-                <p class="text-slate-800 dark:text-slate-200 text-lg leading-relaxed font-calligraphy">
-                    不知道过了多少次，<br>
-                    还是有一个曾经的记忆反噬瞬间涌现。<br>
-                    我至终无法评判曾经的过往一切和选择是否对错，<br>
-                    但是好像只有那一条路可以将自己筑起围墙，<br>
+            <div class="glass p-4 sm:p-6 rounded-lg max-w-lg mx-auto">
+                <p class="text-slate-800 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-calligraphy whitespace-pre-line">
+                    不知道过了多少次，
+                    还是有一个曾经的记忆反噬瞬间涌现。
+                    我至终无法评判曾经的过往一切和选择是否对错，
+                    但是好像只有那一条路可以将自己筑起围墙，
                     说谎的人和被骗的人都没有对错的资本。
                 </p>
             </div>
@@ -53,13 +58,13 @@
 
         <!-- 联系方式标题 -->
         <section class="mb-4">
-            <div class="flex items-center gap-6 px-4 mb-8">
+            <div class="flex items-center gap-4 sm:gap-6 px-4 mb-6 sm:mb-8">
                 <div class="h-[1px] flex-1 bg-black/10 dark:bg-white/20"></div>
-                <h2 class="text-[10px] font-black text-slate-900/50 dark:text-white/40 tracking-[0.5em] whitespace-nowrap">奈何 / 山河尽赠佳人</h2>
+                <h2 class="text-[8px] sm:text-[10px] font-black text-slate-900/50 dark:text-white/40 tracking-[0.5em] whitespace-nowrap">奈何 / 山河尽赠佳人</h2>
                 <div class="h-[1px] flex-1 bg-black/10 dark:bg-white/20"></div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <!-- 个人微信 -->
                 <div 
                    class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer"
@@ -139,7 +144,8 @@
                 </a>
                 
                 <!-- 电子邮件 -->
-                <a href="mailto:2768697066@qq.com" target="_blank" rel="noopener noreferrer"
+                <div 
+                   onclick="copyEmail()"
                    class="p-4 rounded-[1.75rem] glass hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 shadow-xl flex items-center justify-between overflow-hidden cursor-pointer">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-[1rem] bg-[#EA4335] flex items-center justify-center shadow-md">
@@ -150,7 +156,7 @@
                             <span class="text-[10px] font-bold opacity-40 tracking-wide text-slate-700 dark:text-slate-400">2768697066@qq.com</span>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -172,6 +178,10 @@
                     <a href="https://www.douyin.com/user/MS4wLjABAAAAsm0xbh_xgQR2ZeDuvUJAPmhGTKGKtx7OgN1YwBN8P9s?from_tab_name=main&vid=7519702144016141606" target="_blank" rel="noopener noreferrer" class="p-3 rounded-[1rem] hover:bg-white/60 dark:hover:bg-slate-700/60 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 text-slate-900/70 dark:text-white/70 hover:text-slate-900 dark:hover:text-white font-calligraphy underline flex items-center gap-2">
                         <img src="./image/douyin.svg" alt="抖音" width="16" height="16" class="inline-block">
                         抖音
+                    </a>
+                    <a href="http://www.coolapk.com/u/22313126" target="_blank" rel="noopener noreferrer" class="p-3 rounded-[1rem] hover:bg-white/60 dark:hover:bg-slate-700/60 transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 active:scale-95 text-slate-900/70 dark:text-white/70 hover:text-slate-900 dark:hover:text-white font-calligraphy underline flex items-center gap-2">
+                        <img src="./image/coolapk.svg" alt="酷安" width="16" height="16" class="inline-block">
+                        酷安
                     </a>
                 </div>
             </div>
