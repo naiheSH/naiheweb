@@ -1,239 +1,575 @@
-/* 基础样式重置 */
-* {
+/* ========== CSS Variables ========== */
+:root {
+    --color-bg: #f8fafc;
+    --color-text: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15), 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset;
+    --modal-bg: white;
+    --modal-text: black;
+    --close-color: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #020617;
+        --color-text: #f1f5f9;
+        --color-text-secondary: #cbd5e1;
+        --color-text-muted: #94a3b8;
+        --color-border: rgba(255, 255, 255, 0.2);
+        --glass-bg: rgba(15, 23, 42, 0.35);
+        --glass-border: rgba(255, 255, 255, 0.15);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35), 0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+        --modal-bg: #1e293b;
+        --modal-text: white;
+        --close-color: #94a3b8;
+    }
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 179, 179, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(199, 206, 234, 0.22) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(181, 234, 215, 0.18) 0%, transparent 50%);
+    color: var(--color-text);
+    overflow-x: hidden;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* 随机背景壁纸容器 */
-.background-wallpaper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.3;
-    transition: opacity 0.5s ease;
-    animation: fadeIn 1s ease-out;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-}
-
-/* 深色模式下的背景透明度调整 */
 @media (prefers-color-scheme: dark) {
-    .background-wallpaper {
-        opacity: 0.2;
+    body {
+        background-image:
+            radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
     }
 }
 
-/* 页面加载动画 */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.3;
-    }
+body.modal-open {
+    overflow: hidden;
 }
 
-/* 深色模式下的加载动画 */
-@media (prefers-color-scheme: dark) {
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 0.2;
-        }
-    }
-}
-
-/* 内容淡入动画 */
-@keyframes contentFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 元素悬停上浮效果 */
-@keyframes hoverUp {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-5px);
-    }
-}
-
-/* 按钮点击反馈动画 */
-@keyframes buttonClick {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.95);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* 卡片悬停动画 */
-@keyframes cardHover {
-    from {
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    }
-    to {
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-    }
-}
-
-/* 深色模式下的卡片悬停动画 */
-@media (prefers-color-scheme: dark) {
-    @keyframes cardHover {
-        from {
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
-        }
-        to {
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-        }
-    }
-}
-
-/* 本地字体定义 - 使用本地字体文件Ma Shan Zheng */
+/* ========== Local Font ========== */
 @font-face {
     font-family: 'Ma Shan Zheng';
-    src: url('../fonts/MaShanZheng-Regular.woff2') format('woff2');
+    src: url('../fonts/MaShanZheng-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
-/* 自定义字体类 */
 .font-calligraphy {
     font-family: 'Ma Shan Zheng', cursive;
 }
 
-/* 内容容器动画 */
-.max-w-2xl {
-    animation: contentFadeIn 1s ease-out;
+/* ========== Animations ========== */
+@keyframes contentFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* 增强的玻璃态样式 */
+@keyframes buttonClick {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.7; }
+    25% { transform: translateY(25vh) rotate(90deg) translateX(10px); }
+    50% { transform: translateY(50vh) rotate(180deg) translateX(-10px); }
+    75% { transform: translateY(75vh) rotate(270deg) translateX(5px); }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(-5px); opacity: 0; }
+}
+
+/* ========== Glass Morphism ========== */
 .glass {
-    /* 更通透的背景色 */
-    background: rgba(255, 255, 255, 0.3);
-    /* 增强的高斯模糊效果 */
+    background: var(--glass-bg);
     backdrop-filter: blur(24px) saturate(120%);
     -webkit-backdrop-filter: blur(24px) saturate(120%);
-    /* 更精致的边框效果 */
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    /* 添加微妙的发光效果 */
-    box-shadow: 
-        0 8px 32px 0 rgba(31, 38, 135, 0.15),
-        0 1px 1px 0 rgba(255, 255, 255, 0.3) inset;
-    color: #1e293b;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--color-text);
     transition: all 0.3s ease;
-    animation: cardHover 0.3s ease-out forwards;
 }
 
-/* 深色模式下的增强玻璃态样式 */
-@media (prefers-color-scheme: dark) {
-    .glass {
-        background: rgba(15, 23, 42, 0.35);
-        backdrop-filter: blur(24px) saturate(120%);
-        -webkit-backdrop-filter: blur(24px) saturate(120%);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 
-            0 8px 32px 0 rgba(0, 0, 0, 0.35),
-            0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
-        color: #f1f5f9;
-    }
-}
-
-/* 玻璃态卡片悬停效果 */
-.glass:hover {
-    transform: translateY(-5px);
-    animation: cardHover 0.3s ease-out forwards;
-}
-
-/* 按钮点击反馈效果 */
 .glass:active {
     animation: buttonClick 0.2s ease-out;
 }
 
-/* 头像悬停效果 */
-.w-24.h-24.rounded-full {
+/* ========== Layout ========== */
+.container {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    animation: contentFadeIn 1s ease-out;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 56rem;
+        padding: 4rem 2rem;
+    }
+}
+
+/* ========== Profile Section ========== */
+.profile-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+    .profile-section {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .profile-section {
+        margin-bottom: 4rem;
+    }
+}
+
+.avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    margin: 0 auto 0.75rem;
+    border: 2px solid white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
 }
 
-.w-24.h-24.rounded-full:hover {
+@media (min-width: 640px) {
+    .avatar {
+        width: 6rem;
+        height: 6rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .avatar {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .avatar {
+        border-color: #1e293b;
+    }
+}
+
+.avatar:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
 }
 
-/* 联系方式卡片悬停效果 */
-.grid-cols-1.sm\:grid-cols-2.gap-5 > div,
-.grid-cols-1.sm\:grid-cols-2.gap-5 > a {
-    transition: all 0.3s ease;
-    animation: contentFadeIn 1s ease-out;
+.profile-title {
+    margin-bottom: 1rem;
 }
 
-.grid-cols-1.sm\:grid-cols-2.gap-5 > div:hover,
-.grid-cols-1.sm\:grid-cols-2.gap-5 > a:hover {
-    transform: translateY(-5px);
-    animation: cardHover 0.3s ease-out forwards;
-}
-
-/* 关闭按钮悬停效果 */
-.close-btn {
-    transition: all 0.3s ease;
-}
-
-.close-btn:hover {
-    transform: scale(1.2);
-    background-color: rgba(0, 0, 0, 0.1);
-    color: #0f172a;
-}
-
-/* 深色模式下的关闭按钮悬停效果 */
-@media (prefers-color-scheme: dark) {
-    .close-btn:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #f1f5f9;
+@media (min-width: 640px) {
+    .profile-title {
+        margin-bottom: 1.5rem;
     }
 }
 
-/* 模态框动画 */
-.modal-content {
-    animation: contentFadeIn 0.3s ease-out;
+.title-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
-/* 二维码图片悬停效果 */
-.qr-code-container img {
-    transition: all 0.3s ease;
+@media (min-width: 640px) {
+    .title-text {
+        font-size: 1.875rem;
+    }
 }
 
-.qr-code-container img:hover {
+@media (min-width: 1024px) {
+    .title-text {
+        font-size: 2.25rem;
+    }
+}
+
+/* ========== Quote Card ========== */
+.quote-card {
+    padding: 1rem 1.5rem;
+    border-radius: 1.75rem;
+    max-width: 24rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .quote-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .quote-card {
+        max-width: 32rem;
+        padding: 2rem 2.5rem;
+    }
+}
+
+.quote-text {
+    text-align: center;
+}
+
+.quote-line {
+    font-size: 0.875rem;
+    line-height: 1.625;
+    margin-bottom: 0.5rem;
+    word-break: keep-all;
+}
+
+.quote-line-short {
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+    .quote-line {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .quote-line {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .quote-line {
+        font-size: 1.25rem;
+        line-height: 1.8;
+    }
+}
+
+/* ========== About Section ========== */
+.about-section {
+    margin-bottom: 1.5rem;
+}
+
+.about-card {
+    padding: 1.25rem 1.5rem;
+    border-radius: 1.75rem;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .about-card {
+        padding: 1.5rem 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-card {
+        max-width: 36rem;
+        padding: 1.75rem 2.5rem;
+    }
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.about-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+    .about-row {
+        font-size: 1rem;
+        gap: 1.25rem;
+    }
+}
+
+.about-label {
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 2.5rem;
+    color: var(--color-text-muted);
+}
+
+.about-value {
+    color: var(--color-text);
+}
+
+/* ========== Contact Section ========== */
+.contact-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .section-divider {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-divider {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.divider-text {
+    font-size: 8px;
+    font-weight: 900;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5em;
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+    .divider-text {
+        font-size: 10px;
+    }
+}
+
+/* ========== Contact Grid ========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+.contact-card {
+    padding: 1rem;
+    border-radius: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.03) translateY(-0.25rem);
+}
+
+@media (prefers-color-scheme: dark) {
+    .contact-card:hover {
+        background: rgba(30, 41, 59, 0.8);
+    }
+}
+
+.contact-card:active {
+    transform: scale(0.95);
+}
+
+.contact-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.contact-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.bg-wechat { background-color: #07C160; }
+.bg-work-wechat { background-color: #3370FF; }
+.bg-lark { background-color: #007AFF; }
+.bg-qq { background-color: #12B7F5; }
+.bg-github { background-color: #181717; }
+.bg-email { background-color: #EA4335; }
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.contact-name {
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: -0.025em;
+}
+
+.contact-id {
+    font-size: 10px;
+    font-weight: 700;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 110px;
+}
+
+/* ========== Footer ========== */
+.site-footer {
+    margin-top: 1.5rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .site-footer {
+        margin-top: 2rem;
+        gap: 1.25rem;
+    }
+}
+
+.social-card {
+    padding: 1rem;
+    border-radius: 1.75rem;
+    max-width: 24rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .social-card {
+        max-width: 32rem;
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+.social-card:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* 樱花飘落效果 */
+.social-title {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.social-heading {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.social-heading:hover {
+    color: var(--color-text);
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+.social-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgba(15, 23, 42, 0.7);
+    text-decoration: underline;
+    transition: all 0.5s ease;
+}
+
+@media (min-width: 640px) {
+    .social-link {
+        padding: 0.75rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .social-link {
+        color: rgba(241, 245, 249, 0.7);
+    }
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.03) translateY(-0.25rem);
+    color: var(--color-text);
+}
+
+@media (prefers-color-scheme: dark) {
+    .social-link:hover {
+        background: rgba(51, 65, 85, 0.6);
+    }
+}
+
+.social-icon {
+    display: inline-block;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: var(--color-text);
+}
+
+.footer-copyright {
+    font-weight: 900;
+}
+
+/* ========== Sakura Effect ========== */
 .sakura-container {
     position: fixed;
     top: 0;
@@ -250,67 +586,83 @@ body {
     background-color: #ffb3b3;
     opacity: 0.7;
     border-radius: 50% 0 50% 0;
-    /* 简化动画设置，确保兼容所有浏览器 */
     animation: fall linear infinite;
+    will-change: transform;
 }
 
-/* 飘落动画 */
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 0.7;
-    }
-    25% {
-        transform: translateY(25vh) rotate(90deg) translateX(10px);
-    }
-    50% {
-        transform: translateY(50vh) rotate(180deg) translateX(-10px);
-    }
-    75% {
-        transform: translateY(75vh) rotate(270deg) translateX(5px);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg) translateX(-5px);
-        opacity: 0;
-    }
-}
-
-/* 二维码模态框样式 */
+/* ========== Modal ========== */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .modal-content {
-    background-color: white;
-    color: black;
+    position: relative;
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
     padding: 2rem;
     border-radius: 1.5rem;
     text-align: center;
     max-width: 400px;
     width: 90%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: contentFadeIn 0.3s ease-out;
+    z-index: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-    .modal-content {
-        background-color: #1e293b;
-        color: white;
-    }
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+.modal-action {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.add-contact-btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background-color: #007AFF;
+    color: white;
+    font-weight: 700;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.add-contact-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 .hidden {
     display: none;
 }
 
+/* ========== QR Code ========== */
 .qr-code-container {
     margin: 1.5rem 0;
 }
@@ -320,8 +672,15 @@ body {
     height: auto;
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
+.qr-code-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Close Button ========== */
 .close-btn {
     position: absolute;
     top: 1rem;
@@ -330,7 +689,7 @@ body {
     border: none;
     font-size: 1.6rem;
     cursor: pointer;
-    color: #64748b;
+    color: var(--close-color);
     width: 36px;
     height: 36px;
     padding: 0;
@@ -342,17 +701,16 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     margin: 0;
+    z-index: 2;
 }
 
 .close-btn:hover {
+    transform: scale(1.2);
     background-color: rgba(0, 0, 0, 0.1);
     color: #0f172a;
 }
 
 @media (prefers-color-scheme: dark) {
-    .close-btn {
-        color: #94a3b8;
-    }
     .close-btn:hover {
         background-color: rgba(255, 255, 255, 0.1);
         color: #f1f5f9;
