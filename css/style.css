@@ -5,8 +5,8 @@
     --color-text-secondary: #475569;
     --color-text-muted: #94a3b8;
     --color-border: rgba(0, 0, 0, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.3);
-    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.35);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15), 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset;
     --modal-bg: white;
     --modal-text: black;
@@ -393,13 +393,13 @@ body.modal-open {
 }
 
 .contact-card:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.3);
     transform: scale(1.03) translateY(-0.25rem);
 }
 
 @media (prefers-color-scheme: dark) {
     .contact-card:hover {
-        background: rgba(30, 41, 59, 0.8);
+        background: rgba(30, 41, 59, 0.4);
     }
 }
 
@@ -539,7 +539,7 @@ body.modal-open {
 }
 
 .social-link:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
     transform: scale(1.03) translateY(-0.25rem);
     color: var(--color-text);
 }
