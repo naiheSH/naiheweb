@@ -170,10 +170,8 @@
                 </a>
                 
                 <!-- 电子邮件 -->
-                <div 
-                   onclick="copyEmail()"
-                   class="glass contact-card">
-                    <div class="contact-card-inner">
+                <div class="glass contact-card">
+                    <div class="contact-card-inner" onclick="copyEmail()">
                         <div class="contact-icon bg-email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </div>
@@ -182,6 +180,7 @@
                             <span class="contact-id">2768697066@qq.com</span>
                         </div>
                     </div>
+                    <a href="mailto:2768697066@qq.com" class="contact-mailto" onclick="event.stopPropagation()">写邮件</a>
                 </div>
             </div>
         </section>
