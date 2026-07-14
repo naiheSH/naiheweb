@@ -44,13 +44,7 @@ document.addEventListener('keydown', function(e) {
 
 // 复制邮箱到剪贴板
 function copyEmail() {
-    var email = '2768697066@qq.com';
-    
-    navigator.clipboard.writeText(email).then(function() {
-        alert('邮箱号已复制到剪贴板');
-    }).catch(function() {
-        alert('复制失败，请手动复制：' + email);
-    });
+    navigator.clipboard.writeText('2768697066@qq.com').catch(function() {});
 }
 
 // 樱花飘落效果（根据屏幕尺寸动态数量）

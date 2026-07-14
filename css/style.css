@@ -414,36 +414,6 @@ body.modal-open {
     width: 100%;
 }
 
-.contact-mailto {
-    display: block;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #007AFF;
-    text-decoration: none;
-    border: 1px solid rgba(0, 122, 255, 0.3);
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-}
-
-.contact-mailto:hover {
-    background: rgba(0, 122, 255, 0.08);
-    border-color: rgba(0, 122, 255, 0.5);
-}
-
-@media (prefers-color-scheme: dark) {
-    .contact-mailto {
-        color: #5ac8fa;
-        border-color: rgba(90, 200, 250, 0.3);
-    }
-    .contact-mailto:hover {
-        background: rgba(90, 200, 250, 0.1);
-        border-color: rgba(90, 200, 250, 0.5);
-    }
-}
-
 .contact-icon {
     width: 3rem;
     height: 3rem;
